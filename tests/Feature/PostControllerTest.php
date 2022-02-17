@@ -33,12 +33,16 @@ class PostControllerTest extends TestCase
     public function it_shows_a_single_post() 
     {
         // Arrange
-        $post = Post::factory()->create(); 
+        $post = Post::factory()->create([
+            'title' => 'Its title',
+            'description' => 'Its description',
+        ]); 
 
         // Act
         $getPosts = (new PostController)->show($post->id);
 
         // Assert
         $this->assertEquals($post->id, $getPosts->id);
+        $this->assertEquals($post->title, $getPosts->title);
     }
 }
