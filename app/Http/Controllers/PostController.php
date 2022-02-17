@@ -14,4 +14,8 @@ class PostController extends Controller
     public function show(int $id) {
         return Post::findOrFail($id);
     }
+
+    public function store(array $post) {
+        return Post::create($post);
+    }
 }
